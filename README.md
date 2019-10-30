@@ -8,4 +8,8 @@
 
 Following this [tutorial](https://github.com/prisma/prisma2/blob/master/docs/tutorial.md)
 
+Setup local PostgreSQL
+`docker-compose up -d`
+
+Run installation wizard
 `npm install -g prisma2`
