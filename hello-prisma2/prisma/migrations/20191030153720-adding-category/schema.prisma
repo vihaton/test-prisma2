@@ -22,4 +22,11 @@ model Post {
   title     String
   content   String?
   author    User?
+  categories Category[]
+}
+
+model Category {
+  id      String @id @default(cuid())
+  name    String
+  posts   Post[]
 }

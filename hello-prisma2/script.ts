@@ -2,9 +2,7 @@ import { Photon } from '@generated/photon'
 
 const photon = new Photon()
 
-// A `main` function so that we can use async/await
-async function main() {
-  // Seed the database with users and posts
+const createUsers = async () => {
   const user1 = await photon.users.create({
     data: {
       email: 'alice@prisma.io',
@@ -45,7 +43,9 @@ async function main() {
     },
   })
   console.log(`Created users: ${user1.name} (${user1.posts.length} post) and (${user2.posts.length} posts) `)
+}
 
+const createPosts = async () => {
   // Retrieve all published posts
   const allPosts = await photon.posts.findMany({
     where: { published: true },
@@ -87,6 +87,36 @@ async function main() {
     })
     .posts()
   console.log(`Retrieved all posts from a specific user: `, postsByUser)
+
+}
+
+const createCategories = async () => {
+  const result = await photon.posts.findMany({
+    select: {
+      id: true
+    }
+  })
+  console.log('posts result with id', result);
+
+  const category = await photon.categories.create({
+    data: {
+      name: "peruspost",
+      posts: {
+        connect:
+          result
+      }
+    },
+  })
+  console.log("new category", category)
+}
+
+// A `main` function so that we can use async/await
+async function main() {
+  // Seed the database with users and posts
+
+  await createUsers()
+  await createPosts()
+  await createCategories()
 }
 
 main()
