@@ -13,3 +13,5 @@ Setup local PostgreSQL
 
 Run installation wizard
 `npm install -g prisma2`
+
+> Note that the DB credentials and addresses are shown in `hello-prisma2/prisma/schema.prisma` in plain-text!
