@@ -4,4 +4,8 @@
 * Lift for database migrations
 * Photon.js for type-safe database access
 
+## Setup
+
+Following this [tutorial](https://github.com/prisma/prisma2/blob/master/docs/tutorial.md)
+
 `npm install -g prisma2`
